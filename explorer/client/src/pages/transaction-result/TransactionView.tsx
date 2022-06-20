@@ -28,6 +28,7 @@ import styles from './TransactionResult.module.css';
 
 type TxDataProps = CertifiedTransaction & {
     status: ExecutionStatusType;
+    timestamp_ms: number;
     gasFee: number;
     txError: string;
     mutated: SuiObjectRef[];
@@ -47,6 +48,11 @@ function formatTxResponse(tx: TxDataProps, txId: string) {
             value: txId,
             className: 'columnheader',
         },
+        {
+            label: 'Timestamp',
+            value: tx.timestamp_ms,
+        },
+
         {
             // May change later
             label: 'Status',
